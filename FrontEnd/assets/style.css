@@ -125,6 +125,35 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+/* Ajout des boutons filtres des projets "category-filter" */
+
+.category-filter {
+	text-align: center;
+	margin: 3em;
+	height: 37px;
+}
+
+.category-filter button {
+	background-color: #FFFEF8;
+	color: #1D6154;
+	border: solid 1px #1D6154;
+	border-radius: 19px;
+	height: 100%;
+	font-family: "Syne";
+	font-weight: 700;
+	font-size: 16px;
+	padding: 0 20px 0 20px;
+	margin: 0 5px 0 5px;
+}
+
+.category-filter button:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
+/* --------------------- */
+
 .gallery {
 	width: 100%;
 	display: grid;
