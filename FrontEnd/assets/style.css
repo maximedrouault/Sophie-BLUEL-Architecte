@@ -20,32 +20,42 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	/* font: inherit; */
 	vertical-align: baseline;
+	text-decoration: none;
+	color: #000000;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -53,11 +63,13 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -84,27 +96,37 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
 
-li:hover {
+li:hover,
+li a:hover {
 	color: #B1663C;
 }
+
+.login-link {
+	font-weight: 600;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
+
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -114,6 +136,7 @@ li:hover {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -121,6 +144,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -166,33 +190,48 @@ li:hover {
 	width: 100%;
 
 }
+
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
+
+.login {
+	width: 35%;
+	margin: auto;
+}
+
+#contact > *,
+.login > * {
 	text-align: center;
 
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form {
+
+#contact form,
+.login form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,
+.login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+
+#contact label,
+.login label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -212,6 +251,12 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em 0 2em 0;
 }
 
+.footer-login-page {
+	position: fixed;
+	bottom: 0;
+	margin: auto;
+	width: 1140px;
+}
