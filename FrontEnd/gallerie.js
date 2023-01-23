@@ -1,6 +1,12 @@
 // Récupération des données "WORKS" sur l'API.
-const response = await fetch("http://localhost:5678/api/works");
-const works = await response.json();
+const responseWorks = await fetch("http://localhost:5678/api/works");
+const works = await responseWorks.json();
+
+// Récupération des données "CATEGORIES" sur l'API.
+const responseCategories = await fetch("http://localhost:5678/api/categories");
+const categories = await responseCategories.json();
+
+
 
 // Fonction pour générer la gallerie en fonction des filtres de type de travaux.
 function generateGallery(works) {
@@ -8,7 +14,7 @@ function generateGallery(works) {
 	for (let i = 0; i < works.length; i++) {
 
 		const work = works[i];
-		// Récupération de l'élément du DOM qui accueillera les fichies des différents travaux.
+		// Récupération de l'élément du DOM qui accueillera les fiches des différents travaux.
 		const sectionGallery = document.querySelector(".gallery");
 		// Création d'une balise dédiée à une fiche de travaux.
 		const galleryElement = document.createElement("figure");
@@ -16,12 +22,12 @@ function generateGallery(works) {
 		const imageElement = document.createElement("img");
 		imageElement.src = work.imageUrl;
 		imageElement.alt = work.title;
-		imageElement.crossOrigin = "";  //à revoir avec DAVID !!!!!!-----------------
+		imageElement.crossOrigin = "";
 		const figCaptionElement = document.createElement("figcaption");
 		figCaptionElement.innerText = work.title;
 		// Rattachement de la balise FIGURE à la section "Gallery".
 		sectionGallery.appendChild(galleryElement);
-		// Rattachement de la balise IMG à "sectionGallery" (la balise figure).
+		// Rattachement des balises IMG et FIGCAPTION à "galleryElement" (la balise FIGURE).
 		galleryElement.appendChild(imageElement);
 		galleryElement.appendChild(figCaptionElement);
 	}
@@ -29,50 +35,39 @@ function generateGallery(works) {
 
 generateGallery(works);
 
+// Ajout du bouton filtre "TOUS" au tableau de catégories récupéré sur l'API.
+const categoryAll = {"id": 0,"name": "Tous"};
+categories.unshift(categoryAll);
 
-// Fonction pour filtrer les projets de la "Gallery"
+// Parcours des données de CATEGORIES pour les ajouter au HTML (Filtres des types de travaux).
+for (let i = 0; i < categories.length; i++) {
 
-// Bouton TOUS seul pour l'instant
+	const category = categories[i];
+	// Récupération de l'élément du DOM qui accueilera les boutons des différentes catégories.
+	const categoryFilterSection = document.querySelector(".category-filter-section");
+	// Création d'une balise dédiée à une catégorie de travaux.
+	const categoryButton = document.createElement("button");
+	categoryButton.innerText = category.name;
+	categoryButton.id = category.id;
+	// Rattachement des balises BUTTON à la section CATEGORY-FILTER-SECTION
+	categoryFilterSection.appendChild(categoryButton);
+}
 
-const buttonFilterAll = document.querySelector(".button-filter-all");
+// Fonction pour filtrer les projets de la "Gallery" à l'aide des boutons de "Catégories"
+const buttonFilter = document.querySelectorAll(".category-filter-section button");
 
-buttonFilterAll.addEventListener("click", function () {
-    document.querySelector(".gallery").innerHTML = "";
-    generateGallery(works);
-});
-
-// Bouton OBJETS seul pour l'instant
-
-const buttonFilterObjects = document.querySelector(".button-filter-objects");
-
-buttonFilterObjects.addEventListener("click", function () {
-    const worksFiltered = works.filter(function (work) {
-        return work.categoryId === 1;
+for(let i = 0; i < buttonFilter.length; i++){
+    buttonFilter[i].addEventListener("click", function() {
+        const buttonFilterId = this.id;
+            if (buttonFilterId == categoryAll.id) {
+				document.querySelector(".gallery").innerHTML = "";
+				generateGallery(works);
+			} else {
+				const worksFiltered = works.filter(function (work) {
+					return work.categoryId == buttonFilterId;
+			});
+        document.querySelector(".gallery").innerHTML = "";
+        generateGallery(worksFiltered);
+		}
     });
-    document.querySelector(".gallery").innerHTML = "";
-    generateGallery(worksFiltered);
-});
-
-// Bouton APPARTEMENTS seul pour l'instant
-
-const buttonFilterApartments = document.querySelector(".button-filter-apartments");
-
-buttonFilterApartments.addEventListener("click", function () {
-    const worksFiltered = works.filter(function (work) {
-        return work.categoryId === 2;
-    });
-    document.querySelector(".gallery").innerHTML = "";
-    generateGallery(worksFiltered);
-});
-
-// Bouton HOTELS ET RESTAURANTS seul pour l'instant
-
-const buttonFilterHotelsAndRestaurants = document.querySelector(".button-filter-hotels-and-restaurants");
-
-buttonFilterHotelsAndRestaurants.addEventListener("click", function () {
-    const worksFiltered = works.filter(function (work) {
-        return work.categoryId === 3;
-    });
-    document.querySelector(".gallery").innerHTML = "";
-    generateGallery(worksFiltered);
-});
+}

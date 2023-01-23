@@ -128,13 +128,13 @@ li:hover {
 
 /* Ajout des boutons filtres des projets "category-filter" */
 
-.category-filter {
+.category-filter-section {
 	text-align: center;
 	margin: 3em;
 	height: 37px;
 }
 
-.category-filter button {
+.category-filter-section button {
 	background-color: #FFFEF8;
 	color: #1D6154;
 	border: solid 1px #1D6154;
@@ -147,7 +147,7 @@ li:hover {
 	margin: 0 5px 0 5px;
 }
 
-.category-filter button:hover {
+.category-filter-section button:hover {
 	background-color: #1D6154;
 	color: #FFFEF8;
 }
