@@ -22,8 +22,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	/* font: inherit; */
 	vertical-align: baseline;
-	text-decoration: none;
-	color: #000000;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -57,6 +55,9 @@ table {
 }
 
 /** end reset css**/
+
+/* Définition générale */
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -64,14 +65,9 @@ body {
 	font-size: 14px;
 }
 
-header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
-}
-
-section {
-	margin: 50px 0
+a {
+	text-decoration: none;
+	color: #000000;
 }
 
 h1{
@@ -87,7 +83,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -96,6 +91,16 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+/* Définition du HEADER */
+
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+
+/* Définition du NAV */
 
 nav ul {
 	display: flex;
@@ -109,13 +114,17 @@ nav li {
 }
 
 li:hover,
-li a:hover {
+a:hover {
 	color: #B1663C;
 }
 
-.login-link {
-	font-weight: 600;
+/* Définitions de SECTION*/
+
+section {
+	margin: 50px 0
 }
+
+/* Définition de la SECTION "Introduction" */
 
 #introduction {
 	display: flex;
@@ -145,12 +154,14 @@ li a:hover {
 	margin-bottom: 0.5em;
 }
 
+/* Définition de la SECTION "Portfolio" */
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
 }
 
-/* Ajout des boutons filtres des projets "category-filter" */
+/* Ajout des boutons filtres des projets "category-filter" à la SECTION "Portfolio"*/
 
 .category-filter-section {
 	text-align: center;
@@ -176,8 +187,6 @@ li a:hover {
 	color: #FFFEF8;
 }
 
-/* --------------------- */
-
 .gallery {
 	width: 100%;
 	display: grid;
@@ -191,20 +200,16 @@ li a:hover {
 
 }
 
+/* Définition de la SECTION "Contact" avec reprises pour la page LOGIN.HTML*/
+
 #contact {
 	width: 50%;
-	margin: auto;
-}
-
-.login {
-	width: 35%;
 	margin: auto;
 }
 
 #contact > *,
 .login > * {
 	text-align: center;
-
 }
 
 #contact h2{
@@ -247,6 +252,23 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+
+/* Définition de la SECTION / FORM de la page LOGIN.HTML */
+
+.login {
+	width: 50%;
+	margin: auto;
+}
+
+.login-link {
+	font-weight: 600;
+}
+
+form a {
+	margin: auto;
+}
+
+/* Définition du FOOTER */
 
 footer nav ul {
 	display: flex;
