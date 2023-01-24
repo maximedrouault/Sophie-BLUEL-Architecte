@@ -35,9 +35,11 @@ function generateGallery(works) {
 
 generateGallery(works);
 
+
 // Ajout du bouton filtre "TOUS" au tableau de catégories récupéré sur l'API.
 const categoryAll = {"id": 0,"name": "Tous"};
 categories.unshift(categoryAll);
+
 
 // Parcours des données de CATEGORIES pour les ajouter au HTML (Filtres des types de travaux).
 for (let i = 0; i < categories.length; i++) {
@@ -53,7 +55,8 @@ for (let i = 0; i < categories.length; i++) {
 	categoryFilterSection.appendChild(categoryButton);
 }
 
-// Fonction pour filtrer les projets de la "Gallery" à l'aide des boutons de "Catégories"
+
+// Filtrage des projets de la "Gallery" à l'aide des boutons de "Catégories"
 const buttonFilter = document.querySelectorAll(".category-filter-section button");
 
 for(let i = 0; i < buttonFilter.length; i++){
@@ -71,3 +74,18 @@ for(let i = 0; i < buttonFilter.length; i++){
 		}
     });
 }
+
+
+// Actualisation de la page INDEX.HTML en "MODE EDITION" (si authentifié).
+const authentificationToken = sessionStorage.getItem("authentificationToken");
+const authentificationState = sessionStorage.getItem("authentificationState");
+
+if (authentificationState === "true") {
+	const authentifiedUser = document.querySelectorAll('.editMode');
+	for (let i = 0; i < authentifiedUser.length; i++) {
+    	authentifiedUser[i].style.display = 'flex';
+}} else {
+	const authentifiedUser = document.querySelectorAll('.editMode');
+	for (let i = 0; i < authentifiedUser.length; i++) {
+    	authentifiedUser[i].style.display = 'none';
+}};

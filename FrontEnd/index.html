@@ -7,11 +7,17 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/16c256a34b.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="gallerie.js"></script>
 </head>
 <body>
+	<div class="authentified-userpanel editMode">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>Mode édition</p>
+		<button class="button-post-changes">publier les changements</button>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
@@ -26,9 +32,13 @@
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="./assets/images/sophie-bluel.png" alt="Photo portrait de Sophie Bluel">
+			<div class="editMode-introduction-figure editMode">
+				<button><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+			</div>
 		</figure>
 		<article>
+			<button class="editMode"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -36,7 +46,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
+		<div class="editMode-portfolio-title">
 		<h2>Mes Projets</h2>
+		<button class="editMode"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+		</div>
 			<div class="category-filter-section">
 				<!-- Boutons filtres par catégories -->
 			</div>

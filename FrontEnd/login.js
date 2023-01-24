@@ -20,15 +20,25 @@ formInfos.addEventListener("submit", async function(event) {
 
 	// Récupération de la réponse et traduction
 	const authentificationResponse = await authentificationInfos.json();
-	// TOKEN du User identifié ------------------------
+	// Stockage du TOKEN du User identifié et de l'état de l'authentification ---------
 	const authentificationToken = authentificationResponse.token;
-	// ------------------------------------------------
+	const authentificationState = authentificationInfos.ok;
+	// --------------------------------------------------------------------------------
 
-	if (authentificationInfos.ok) {
-		window.location.replace("index.html");
-	} else {
-		const wrongUserNotification = document.querySelector(".wrong-user-notification");
-		wrongUserNotification.innerText = "Nom d'utilisateur ou mot de passe incorrect.";
-
-	}
+if (authentificationState === true) {
+	sessionStorage.setItem("authentificationToken", authentificationToken);
+	sessionStorage.setItem("authentificationState", authentificationState);
+	window.location.replace("index.html");
+} else {
+	sessionStorage.setItem("authentificationState", authentificationState);
+	const wrongUserNotification = document.querySelector(".wrong-user-notification");
+	wrongUserNotification.innerText = "Nom d'utilisateur ou mot de passe incorrect.";
+};
 });
+
+// Fonction de mise à jour de INDEX.HTML en mode "Utilisateur authentifié".
+// Ajout du Panel supérieur et du "mode édition" sur les autres zones.
+
+
+// Fonction de notification de l'échec de l'authentification
+
