@@ -105,12 +105,12 @@ h2{
 
 
 /* SWITCH "editMode" */
-.editMode {
+.edit-mode {
 	display: none;
 }
 /* ----------------- */
 
-.editMode i {
+.edit-mode i {
 	margin-right: 5px;
 	font-size: 16px;
 }
@@ -134,12 +134,12 @@ button {
 	padding: 10px 0 10px 0;
 }
 
-.editMode-introduction-figure {
+.edit-mode-introduction-figure {
 	width: 80%;
 	margin: auto;
 }
 
-.editMode-portfolio-title {
+.edit-mode-portfolio-title {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -147,7 +147,7 @@ button {
 	gap: 2%;
 }
 
-.editMode-portfolio-title button {
+.edit-mode-portfolio-title button {
 	margin: 0;
 }
 

@@ -1,3 +1,6 @@
+// Import de la fonction "editMode" à partir de "editMode.js" permettant d'actualiser la page INDEX.HTML si authentifié.
+import { editMode } from "./editMode.js";
+
 // Récupération des données "WORKS" sur l'API.
 const responseWorks = await fetch("http://localhost:5678/api/works");
 const works = await responseWorks.json();
@@ -75,17 +78,5 @@ for(let i = 0; i < buttonFilter.length; i++){
     });
 }
 
-
-// Actualisation de la page INDEX.HTML en "MODE EDITION" (si authentifié).
-const authentificationToken = sessionStorage.getItem("authentificationToken");
-const authentificationState = sessionStorage.getItem("authentificationState");
-
-if (authentificationState === "true") {
-	const authentifiedUser = document.querySelectorAll('.editMode');
-	for (let i = 0; i < authentifiedUser.length; i++) {
-    	authentifiedUser[i].style.display = 'flex';
-}} else {
-	const authentifiedUser = document.querySelectorAll('.editMode');
-	for (let i = 0; i < authentifiedUser.length; i++) {
-    	authentifiedUser[i].style.display = 'none';
-}};
+// Appel de la fonction "editMode" de "editMode.js" qui permet d'actualiser la page INDEX.HTML si authentifié.
+editMode ();

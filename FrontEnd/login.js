@@ -1,5 +1,4 @@
 // Récupération des informations d'authentification à partir du FORM de LOGIN.HTML
-
 const formInfos = document.querySelector("form");
 
 // Fonction d'authentification à partir des informations de l'API
@@ -25,6 +24,7 @@ formInfos.addEventListener("submit", async function(event) {
 	const authentificationState = authentificationInfos.ok;
 	// --------------------------------------------------------------------------------
 
+// Retour conditionnel en fonction de l'authentification et stockage des données dans le "sessionStorage".
 if (authentificationState === true) {
 	sessionStorage.setItem("authentificationToken", authentificationToken);
 	sessionStorage.setItem("authentificationState", authentificationState);
@@ -35,10 +35,3 @@ if (authentificationState === true) {
 	wrongUserNotification.innerText = "Nom d'utilisateur ou mot de passe incorrect.";
 };
 });
-
-// Fonction de mise à jour de INDEX.HTML en mode "Utilisateur authentifié".
-// Ajout du Panel supérieur et du "mode édition" sur les autres zones.
-
-
-// Fonction de notification de l'échec de l'authentification
-
