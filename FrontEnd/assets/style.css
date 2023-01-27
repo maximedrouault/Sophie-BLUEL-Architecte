@@ -151,6 +151,143 @@ button {
 	margin: 0;
 }
 
+/* Définition de la MODALE */
+
+/* Style de base pour cacher la modale */
+.modal {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+ /* Style pour le contenu de la modale */
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	box-sizing: border-box;
+	width: 630px;
+	height: 730px;
+	overflow: auto;
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 16px 20px 13px 20px;
+}
+
+.close-modal-button-container {
+	width: 100%;
+	text-align: end;
+}
+  
+.modal-gallery-container {
+	width: 75%;
+	text-align: center;
+	height: auto;
+}
+
+.modal-gallery-grid-container {
+	width: 100%;
+	height: 400px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 7px;
+	grid-row-gap: 13px;
+	margin-top: 45px;
+}
+
+.modal-gallery-grid-container img {
+	width: 76px;
+	height: 103px;
+}
+
+.modal-gallery-grid-container figure {
+	text-align: left;
+	position: relative;
+}
+
+.edit-button-modale {
+	padding: 0;
+	font-size: 12px;
+}
+
+.modal-gallery-grid-container figure:hover .enlarge-image-button-modale {
+	display: block;
+}
+
+.enlarge-image-button-modale {
+	display: none;
+	position: absolute;
+	top: 6px;
+	right: 33px;
+	z-index: 1;
+	background-color: #000000;
+	color: #FFFFFF;
+	border-radius: 2px;
+	height: 20px;
+	width: 18px;
+	padding: 0;
+}
+
+.trash-button-modale {
+	position: absolute;
+	top: 6px;
+	right: 12px;
+	z-index: 1;
+	background-color: #000000;
+	color: #FFFFFF;
+	border-radius: 2px;
+	height: 20px;
+	width: 18px;
+	padding: 0;
+}
+
+.trash-button-modale i,
+.enlarge-image-button-modale i {
+	font-size: 10px;
+	margin: 0;
+}
+
+h3 {
+	font-family: "Work sans";
+	font-size: 26px;
+	font-weight: 400;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #B3B3B3;
+    text-align: center;
+	width: 75%;
+	margin-top: 45px;
+}
+
+.add-photo-button {
+	background-color: #1D6154;
+	color: #FFFFFF;
+	border: solid 1px #1D6154;
+	border-radius: 19px;
+	font-family: "Syne";
+	font-weight: 700;
+	font-size: 14px;
+	height: 36px;
+	width: 237px;
+	padding: 0 20px 0 20px;
+	margin-top: 25px;
+}
+
+.delete-gallery-button {
+	color: #D65353;
+	background-color: #FFFFFF;
+}
+
 /* Définition du HEADER */
 
 header {
@@ -248,7 +385,6 @@ section {
 
 .gallery img {
 	width: 100%;
-
 }
 
 /* Définition de la SECTION "Contact" avec reprises pour la page LOGIN.HTML*/

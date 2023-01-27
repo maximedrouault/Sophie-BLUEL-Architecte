@@ -1,5 +1,8 @@
 // Import de la fonction "editMode" à partir de "editMode.js" permettant d'actualiser la page INDEX.HTML si authentifié.
-import { editMode } from "./editMode.js";
+import {editMode} from "./editMode.js";
+// Import de la fonction "modale" à partir de "modale.js" permettant de gérer l'affichage de la MODALE dans INDEX.HTML.
+import {modale} from "./modale.js";
+
 
 // Récupération des données "WORKS" sur l'API.
 const responseWorks = await fetch("http://localhost:5678/api/works");
@@ -80,3 +83,6 @@ for(let i = 0; i < buttonFilter.length; i++){
 
 // Appel de la fonction "editMode" de "editMode.js" qui permet d'actualiser la page INDEX.HTML si authentifié.
 editMode ();
+
+// Appel de la fonction de gestion de la "Modale" dans "modale.JS" qui permet de gérer les projets si authentifié.
+modale ();
