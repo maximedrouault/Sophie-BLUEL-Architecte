@@ -375,6 +375,16 @@ section {
 	color: #FFFEF8;
 }
 
+.category-filter-section button:active {
+	background-color: #0E2F28;
+	color: #FFFEF8;
+}
+
+input[type="submit"]:active {
+	background-color: #0E2F28;
+	color: #FFFEF8;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;

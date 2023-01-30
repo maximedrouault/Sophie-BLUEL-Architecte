@@ -1,16 +1,11 @@
+// Import de la liste de tous les travaux du FETCH sur l'API, à partir de FETCHDATAS.JS
+import { works } from "./fetchDatas.js";
+// Import de la liste de toutes les catégories de travaux du FETCH sur l'API, à partir de FETCHDATAS.JS
+import { categories } from "./fetchDatas.js";
 // Import de la fonction "editMode" à partir de "editMode.js" permettant d'actualiser la page INDEX.HTML si authentifié.
 import {editMode} from "./editMode.js";
 // Import de la fonction "modale" à partir de "modale.js" permettant de gérer l'affichage de la MODALE dans INDEX.HTML.
 import {modale} from "./modale.js";
-
-
-// Récupération des données "WORKS" sur l'API.
-const responseWorks = await fetch("http://localhost:5678/api/works");
-const works = await responseWorks.json();
-
-// Récupération des données "CATEGORIES" sur l'API.
-const responseCategories = await fetch("http://localhost:5678/api/categories");
-const categories = await responseCategories.json();
 
 
 
@@ -49,7 +44,6 @@ categories.unshift(categoryAll);
 
 // Parcours des données de CATEGORIES pour les ajouter au HTML (Filtres des types de travaux).
 for (let i = 0; i < categories.length; i++) {
-
 	const category = categories[i];
 	// Récupération de l'élément du DOM qui accueilera les boutons des différentes catégories.
 	const categoryFilterSection = document.querySelector(".category-filter-section");
@@ -61,25 +55,24 @@ for (let i = 0; i < categories.length; i++) {
 	categoryFilterSection.appendChild(categoryButton);
 }
 
-
 // Filtrage des projets de la "Gallery" à l'aide des boutons de "Catégories"
-const buttonFilter = document.querySelectorAll(".category-filter-section button");
+	const buttonFilter = document.querySelectorAll(".category-filter-section button");
 
-for(let i = 0; i < buttonFilter.length; i++){
-    buttonFilter[i].addEventListener("click", function() {
-        const buttonFilterId = this.id;
-            if (buttonFilterId == categoryAll.id) {
-				document.querySelector(".gallery").innerHTML = "";
-				generateGallery(works);
-			} else {
-				const worksFiltered = works.filter(function (work) {
-					return work.categoryId == buttonFilterId;
-			});
-        document.querySelector(".gallery").innerHTML = "";
-        generateGallery(worksFiltered);
-		}
-    });
-}
+	for(let i = 0; i < buttonFilter.length; i++){
+		buttonFilter[i].addEventListener("click", function() {
+			const buttonFilterId = this.id;
+				if (buttonFilterId == categoryAll.id) {
+					document.querySelector(".gallery").innerHTML = "";
+					generateGallery(works);
+				} else {
+					const worksFiltered = works.filter(function (work) {
+						return work.categoryId == buttonFilterId;
+				});
+			document.querySelector(".gallery").innerHTML = "";
+			generateGallery(worksFiltered);
+			}
+		});
+	}
 
 // Appel de la fonction "editMode" de "editMode.js" qui permet d'actualiser la page INDEX.HTML si authentifié.
 editMode ();

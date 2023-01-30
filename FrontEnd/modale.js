@@ -1,35 +1,36 @@
+// Import de la liste de tous les travaux à partir du FETCH sur l'API, de FETCHDATAS.JS
+import { works } from "./fetchDatas.js";
+
+
 // Fonction permettant la gestion de l'ouverture et fermeture de la MODALE en "EDITMODE".
-export function modale () {
+export function modale() {
 
-const openModalButton = document.querySelector(".open-modal-button");
-const closeModalBtn = document.querySelector(".close-modal-button");
-const modal = document.querySelector(".modal");
+	const openModalButton = document.querySelectorAll(".open-modal-button, .modify-projects");
+	const closeModalBtn = document.querySelector(".close-modal-button");
+	const modal = document.querySelector(".modal");
 
-// Ajout d'un écouteur d'événement pour ouvrir la modale.
-openModalButton.addEventListener("click", function() {
-  modal.style.display = "flex";
-});
+	// Ajout des écouteurs d'événements pour ouvrir la modale (Boutons "Publier les changements" et "Modifier" à côté de Mes Projets).
+	for(let i = 0; i < openModalButton.length; i++){
+		openModalButton[i].addEventListener("click", function() {
+		modal.style.display = "flex";
+		})
+	};
 
-// Ajout d'un écouteur d'événement pour fermer la modale.
-closeModalBtn.addEventListener("click", function() {
-  modal.style.display = "none";
-});
+	// Ajout d'un écouteur d'événement pour fermer la modale.
+	closeModalBtn.addEventListener("click", function() {
+	modal.style.display = "none";
+	});
 
-// Ajout d'un écouteur d'événement pour fermer la modale en cliquant à l'extérieur de celle-ci.
-modal.addEventListener("click", function(event) {
-	if (event.target === modal) {
-		modal.style.display = "none";
-	}
-});
+	// Ajout d'un écouteur d'événement pour fermer la modale en cliquant à l'extérieur de celle-ci.
+	modal.addEventListener("click", function(event) {
+		if (event.target === modal) {
+			modal.style.display = "none";
+		}
+	});
 };
 
 
-
 // Génération de la "GALLERY" de la MODALE.
-
-// Récupération des données "WORKS" sur l'API.
-const responseWorks = await fetch("http://localhost:5678/api/works");
-const works = await responseWorks.json();
 
 // Fonction pour générer la "GALLERY" de la MODALE.
 function generateGalleryModale(works) {

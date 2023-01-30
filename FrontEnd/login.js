@@ -29,9 +29,9 @@ if (authentificationState === true) {
 	sessionStorage.setItem("authentificationToken", authentificationToken);
 	sessionStorage.setItem("authentificationState", authentificationState);
 	window.location.replace("index.html");
-} else {
-	sessionStorage.setItem("authentificationState", authentificationState);
-	const wrongUserNotification = document.querySelector(".wrong-user-notification");
-	wrongUserNotification.innerText = "Nom d'utilisateur ou mot de passe incorrect.";
-};
+	} else {
+		sessionStorage.setItem("authentificationState", authentificationState);
+		const wrongUserNotification = document.querySelector(".wrong-user-notification");
+		wrongUserNotification.innerText = "Nom d'utilisateur ou mot de passe incorrect.";
+	};
 });
