@@ -42,7 +42,7 @@ const categoryAll = {"id": 0,"name": "Tous"};
 categories.unshift(categoryAll);
 
 
-// Parcours des données de CATEGORIES pour les ajouter au HTML (Filtres des types de travaux).
+// Parcours des données de CATEGORIES pour les ajouter au HTML et créer les "boutons de catégories" (Filtres des types de travaux).
 for (let i = 0; i < categories.length; i++) {
 	const category = categories[i];
 	// Récupération de l'élément du DOM qui accueilera les boutons des différentes catégories.
@@ -50,29 +50,30 @@ for (let i = 0; i < categories.length; i++) {
 	// Création d'une balise dédiée à une catégorie de travaux.
 	const categoryButton = document.createElement("button");
 	categoryButton.innerText = category.name;
-	categoryButton.id = category.id;
+	// Ajout des Listerner sur les boutons de catégories en même temps que leurs générations.
+	categoryButton.addEventListener("click", function() {
+		categoryFilter(category.id);
+	});
 	// Rattachement des balises BUTTON à la section CATEGORY-FILTER-SECTION
 	categoryFilterSection.appendChild(categoryButton);
 }
 
-// Filtrage des projets de la "Gallery" à l'aide des boutons de "Catégories"
-	const buttonFilter = document.querySelectorAll(".category-filter-section button");
 
-	for(let i = 0; i < buttonFilter.length; i++){
-		buttonFilter[i].addEventListener("click", function() {
-			const buttonFilterId = this.id;
-				if (buttonFilterId == categoryAll.id) {
-					document.querySelector(".gallery").innerHTML = "";
-					generateGallery(works);
-				} else {
-					const worksFiltered = works.filter(function (work) {
-						return work.categoryId == buttonFilterId;
-				});
-			document.querySelector(".gallery").innerHTML = "";
-			generateGallery(worksFiltered);
-			}
-		});
+// Fonction de "Filtrage des projets" de la "Gallery" à l'aide des boutons de "Catégories"
+function categoryFilter(categoryButtonId) {
+	if (categoryButtonId == categoryAll.id) {
+		document.querySelector(".gallery").innerHTML = "";
+		generateGallery(works);
+	} else {
+		const worksFiltered = works.filter(function (work) {
+		return work.categoryId == categoryButtonId;
+	});
+
+	document.querySelector(".gallery").innerHTML = "";
+	generateGallery(worksFiltered);
 	}
+};
+
 
 // Appel de la fonction "editMode" de "editMode.js" qui permet d'actualiser la page INDEX.HTML si authentifié.
 editMode ();
