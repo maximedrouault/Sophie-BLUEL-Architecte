@@ -64,18 +64,13 @@ for (let i = 0; i < categories.length; i++) {
 // Fonction de "Filtrage des projets" de la "Gallery" à l'aide des boutons de "Catégories"
 async function categoryFilter(categoryButtonId) {
 
-	const responseWorks = await fetch("http://localhost:5678/api/works");
-	const works = await responseWorks.json();
-
 	if (categoryButtonId == categoryAll.id) {
 		document.querySelector(".gallery").innerHTML = "";
 		generateGallery(works);
-		console.log(works);
 	} else {
 		const worksFiltered = works.filter(function (work) {
 		return work.categoryId == categoryButtonId;
 	});
-	console.log(worksFiltered)
 
 	document.querySelector(".gallery").innerHTML = "";
 	generateGallery(worksFiltered);

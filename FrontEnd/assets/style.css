@@ -387,6 +387,16 @@ form hr {
 	border: none;
 }
 
+.valid-form:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
+.valid-form:active {
+	background-color: #0E2F28;
+	color: #FFFEF8;
+}
+
 /* Définition du HEADER */
 
 header {
