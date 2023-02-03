@@ -3,10 +3,11 @@ import { works } from "./fetchDatas.js";
 // Import de la liste de toutes les catégories de travaux du FETCH sur l'API, à partir de FETCHDATAS.JS
 import { categories } from "./fetchDatas.js";
 // Import de la fonction "editMode" à partir de "editMode.js" permettant d'actualiser la page INDEX.HTML si authentifié.
-import {editMode} from "./editMode.js";
+import { editMode } from "./editMode.js";
 // Import de la fonction "modale" à partir de "modale.js" permettant de gérer l'affichage de la MODALE dans INDEX.HTML.
-import {modale} from "./modale.js";
-
+import { modale } from "./modale.js";
+// Export de la fonction "generateGallery" dans "modale.js" pour actualisation de l'affichage des "Galleries" après ajout ou suppression d'un projet.
+export { generateGallery };
 
 
 // Fonction pour générer la gallerie en fonction des filtres de type de travaux.
@@ -19,6 +20,7 @@ function generateGallery(works) {
 		const sectionGallery = document.querySelector(".gallery");
 		// Création d'une balise dédiée à une fiche de travaux.
 		const galleryElement = document.createElement("figure");
+		galleryElement.dataset.id = work.id;
 		// Création des balises.
 		const imageElement = document.createElement("img");
 		imageElement.src = work.imageUrl;
@@ -60,14 +62,20 @@ for (let i = 0; i < categories.length; i++) {
 
 
 // Fonction de "Filtrage des projets" de la "Gallery" à l'aide des boutons de "Catégories"
-function categoryFilter(categoryButtonId) {
+async function categoryFilter(categoryButtonId) {
+
+	const responseWorks = await fetch("http://localhost:5678/api/works");
+	const works = await responseWorks.json();
+
 	if (categoryButtonId == categoryAll.id) {
 		document.querySelector(".gallery").innerHTML = "";
 		generateGallery(works);
+		console.log(works);
 	} else {
 		const worksFiltered = works.filter(function (work) {
 		return work.categoryId == categoryButtonId;
 	});
+	console.log(worksFiltered)
 
 	document.querySelector(".gallery").innerHTML = "";
 	generateGallery(worksFiltered);

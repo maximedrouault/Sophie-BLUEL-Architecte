@@ -168,6 +168,8 @@ button {
   }
   
  /* Style pour le contenu de la modale */
+
+ /* Switch Modal "Suppresion de projet" ou "Form Ajout de projet" */
 .modal-content {
 	display: flex;
 	flex-direction: column;
@@ -181,6 +183,23 @@ button {
 	color: #000000;
 	padding: 16px 20px 13px 20px;
 }
+
+.modal-content-form {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	box-sizing: border-box;
+	width: 630px;
+	height: 730px;
+	overflow: auto;
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 16px 20px 13px 20px;
+}
+/* ----------SWITCH----------- */
+
+/* Définition de la "Modale", "vu et suppression de projet" */
 
 .close-modal-button-container {
 	width: 100%;
@@ -269,7 +288,8 @@ hr {
 	margin-top: 45px;
 }
 
-.add-photo-button {
+.add-photo-button,
+.valid-form {
 	background-color: #1D6154;
 	color: #FFFFFF;
 	border: solid 1px #1D6154;
@@ -286,6 +306,85 @@ hr {
 .delete-gallery-button {
 	color: #D65353;
 	background-color: #FFFFFF;
+}
+
+/* Définition de la "Modale", "ajout de projet" */
+
+.modal-form-container {
+	width: 72%;
+	height: auto;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+.return-and-close-modal-button-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+/* Définition du FORM de la MODALE */
+
+.project-photo-file-add-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 169px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	text-align: center;
+	margin-top: 36px;
+}
+
+.project-photo-file-add-container img {
+	height: 100%;
+}
+
+.project-photo-file-add-icone {
+	font-size: 58px;
+	color: #B9C5CC;
+}
+
+.project-photo-file-add-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #CBD6DC;
+	color: #306685;
+	border-radius: 18px;
+	font-size: 14px;
+	font-weight: 500;
+	height: 36px;
+	width: 173px;
+	margin: 0;
+}
+
+#project-photo-file-add-input {
+	display: none;
+}
+
+.project-photo-file-add-description {
+	font-size: 10px;
+}
+
+form label {
+	text-align: left;
+}
+
+form hr {
+	width: 100%;
+	margin-bottom: 32px;
+}
+
+.valid-form {
+	margin: auto;
+	background-color: #A7A7A7;
+	border: none;
 }
 
 /* Définition du HEADER */
@@ -422,7 +521,8 @@ input[type="submit"]:active {
 }
 
 #contact input,
-.login input {
+.login input,
+.modal-content-form input, select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -448,6 +548,10 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+.modal-content-form label:not(.project-photo-file-add-button) {
+	margin: 30px 0 10px 0;
 }
 
 /* Définition de la SECTION / FORM de la page LOGIN.HTML */
