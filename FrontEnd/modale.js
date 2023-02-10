@@ -17,7 +17,7 @@ export function modale() {
 	for(let i = 0; i < openModalButton.length; i++){
 		openModalButton[i].addEventListener("click", function() {
 		modal.style.display = "flex";
-		})
+		});
 	};
 
 	// Ajout des Listener pour fermer la modale au clique sur un bouton "Fermer".
@@ -31,7 +31,7 @@ export function modale() {
 	modal.addEventListener("click", function(event) {
 		if (event.target === modal) {
 			modal.style.display = "none";
-		}
+		};
 	});
 };
 
@@ -49,7 +49,6 @@ returnModalButton.addEventListener("click", function() {
 
 
 // Génération de la "GALLERY" de la MODALE.
-const authentificationToken = sessionStorage.getItem("authentificationToken");
 
 // Fonction pour générer la "GALLERY" de la MODALE.
 function generateGalleryModale(works) {
@@ -79,7 +78,6 @@ function generateGalleryModale(works) {
 		trashButtonElementModale.addEventListener("click", function() {
 			// Appel de la fonction "deleteWork" pour supprimer le projet (work.id) en fonction du bouton "Trash" cliqué.
 			deleteWork(work.id);
-			console.log("workId", work.id);
 		});
 		const buttonGalleryElementModale = document.createElement("button");
 		buttonGalleryElementModale.className = "edit-button-modale";
@@ -98,6 +96,9 @@ function generateGalleryModale(works) {
 
 generateGalleryModale(works);
 
+
+// Récupération du Token d'authentification.
+const authentificationToken = sessionStorage.getItem("authentificationToken");
 
 // Fonction de "Suppresion" de projet de la "Gallery" "Modale".
 async function deleteWork(workId) {
@@ -125,6 +126,7 @@ async function deleteWork(workId) {
 	};
 };
 
+
 // Passage de la "MODALE" en mode formulaire d'ajout de projet si clique sur le bouton "Ajouter une photo" de la partie "Gallerie / suppresion de projet" de la "MODALE".
 // Ajout du Listener sur le bouton "Ajouter une photo" et SWITCH de la "MODALE" si cliqué.
 const addPhotoButton = document.querySelector(".add-photo-button");
@@ -135,25 +137,6 @@ addPhotoButton.addEventListener("click", function() {
 	const modalFormSwitch = document.querySelector(".modal-content-form");
 	modalFormSwitch.style.display = "flex";
 });
-
-
-// Injection de la liste des "CATEGORIES" dans la liste "SELECT" "#project-category" de la partie "Ajout de projet" de la "MODALE".
-// Copie du tableau de catégories récupéré précédement via le FETCH en enlevant l'index 0 (catégorie "TOUS").
-const categoriesModale = categories.slice(0);
-
-// Parcours des données de "categoriesModale" pour les ajouter au HTML et créer les options de la liste "SELECT" de la partie "Ajout de projet" de la "MODALE".
-for (let i = 0; i < categoriesModale.length; i++) {
-	const categoryModale = categoriesModale[i];
-	// Récupération de l'élément du DOM qui accueillera la liste des catégories.
-	const categoryListModale = document.querySelector("#project-category");
-	// Création des balises "OPTION".
-	const categoryListModaleOptions = document.createElement("option");
-	categoryListModaleOptions.value = categoryModale.id;
-	categoryListModaleOptions.innerText = categoryModale.name;
-	// Rattachement des balises "OPTION" à la liste "SELECT" de la partie "Ajout de projet" de la "MODALE".
-	categoryListModale.appendChild(categoryListModaleOptions);
-};
-
 
 
 // Gestion du "PREVIEW" de l'image choisie de "L'AJOUT DE PROJET" de la "MODALE".
@@ -180,11 +163,28 @@ projectPhotoFileAddInputFormModale.addEventListener("change", function() {
 			projectPhotoFileAddInputFormModale.click();
 		});
 	} else {
-		URL.revokeObjectURL(projectPhotoFileAddInputFormModale.files[0]);
 		projectPhotoFileAddInputFormModale.value = "";
 		return alert ("Taille de l'image supérieure à 4mo.")
 	};
 });
+
+
+// Injection de la liste des "CATEGORIES" dans la liste "SELECT" "#project-category" de la partie "Ajout de projet" de la "MODALE".
+// Copie du tableau de catégories récupéré précédement via le FETCH en enlevant l'index 0 (catégorie "TOUS").
+const categoriesModale = categories.slice(0);
+
+// Parcours des données de "categoriesModale" pour les ajouter au HTML et créer les options de la liste "SELECT" de la partie "Ajout de projet" de la "MODALE".
+for (let i = 0; i < categoriesModale.length; i++) {
+	const categoryModale = categoriesModale[i];
+	// Récupération de l'élément du DOM qui accueillera la liste des catégories.
+	const categoryListModale = document.querySelector("#project-category");
+	// Création des balises "OPTION".
+	const categoryListModaleOptions = document.createElement("option");
+	categoryListModaleOptions.value = categoryModale.id;
+	categoryListModaleOptions.innerText = categoryModale.name;
+	// Rattachement des balises "OPTION" à la liste "SELECT" de la partie "Ajout de projet" de la "MODALE".
+	categoryListModale.appendChild(categoryListModaleOptions);
+};
 
 
 // Gestion de la validation du "FORM" de la "MODALE"
@@ -196,7 +196,7 @@ validButtonFormModale.addEventListener("click", function(event) {
 	event.preventDefault();
 	// Vérification de la validité des informations des champs de la "MODALE" soumis.
 	if (projectPhotoFileAddInputFormModale.checkValidity() && projectTitleFormModale.checkValidity() && projectCategoryFormModale.checkValidity() === true) {
-		// Appel de fonction pour ajouter le projet à l'API et aux Galleries.
+		// Appel de la fonction pour ajouter le projet à l'API et aux Galleries.
 		addWork();
 	} else {
 		return alert("Tous les champs sont requis.")

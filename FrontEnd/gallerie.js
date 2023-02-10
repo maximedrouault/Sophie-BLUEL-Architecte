@@ -33,8 +33,8 @@ function generateGallery(works) {
 		// Rattachement des balises IMG et FIGCAPTION à "galleryElement" (la balise FIGURE).
 		galleryElement.appendChild(imageElement);
 		galleryElement.appendChild(figCaptionElement);
-	}
-}
+	};
+};
 
 generateGallery(works);
 
@@ -58,11 +58,11 @@ for (let i = 0; i < categories.length; i++) {
 	});
 	// Rattachement des balises BUTTON à la section CATEGORY-FILTER-SECTION
 	categoryFilterSection.appendChild(categoryButton);
-}
+};
 
 
 // Fonction de "Filtrage des projets" de la "Gallery" à l'aide des boutons de "Catégories"
-async function categoryFilter(categoryButtonId) {
+function categoryFilter(categoryButtonId) {
 
 	if (categoryButtonId == categoryAll.id) {
 		document.querySelector(".gallery").innerHTML = "";
@@ -70,11 +70,12 @@ async function categoryFilter(categoryButtonId) {
 	} else {
 		const worksFiltered = works.filter(function (work) {
 		return work.categoryId == categoryButtonId;
-	});
+		});
 
+	// Affichage de la "Gallery" filtrée.
 	document.querySelector(".gallery").innerHTML = "";
 	generateGallery(worksFiltered);
-	}
+	};
 };
 
 

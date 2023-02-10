@@ -24,11 +24,11 @@ formInfos.addEventListener("submit", async function(event) {
 	const authentificationState = authentificationInfos.ok;
 	// --------------------------------------------------------------------------------
 
-// Retour conditionnel en fonction de l'authentification et stockage des données dans le "sessionStorage".
-if (authentificationState === true) {
-	sessionStorage.setItem("authentificationToken", authentificationToken);
-	sessionStorage.setItem("authentificationState", authentificationState);
-	window.location.replace("index.html");
+	// Retour conditionnel en fonction de l'authentification et stockage des données dans le "sessionStorage".
+	if (authentificationState === true) {
+		sessionStorage.setItem("authentificationToken", authentificationToken);
+		sessionStorage.setItem("authentificationState", authentificationState);
+		window.location.replace("index.html");
 	} else {
 		sessionStorage.setItem("authentificationState", authentificationState);
 		const wrongUserNotification = document.querySelector(".wrong-user-notification");
