@@ -47,3 +47,5 @@ Cela vous permettra de démarrer le Front et d'accéder à toutes les fonctionna
 email: sophie.bluel@test.tld
 password: S0phie
 ```
+- Vous pouvez également accéder à la documentation Swagger de l'API une fois que le Back est démarré via le lien suivant :<br>
+Lien pour voir la [documentation Swagger](http://localhost:5678/api-docs/)
