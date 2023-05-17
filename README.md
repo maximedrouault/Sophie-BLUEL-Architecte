@@ -26,6 +26,7 @@ Ceci est mon second projet et le premier en Javascript. J'ai réalisé l'ensembl
 ![HTML](https://img.shields.io/badge/HTML-%23FFac45.svg?&style=for-the-badge&logo=html5&logoColor=white&color=orange)
 ![CSS](https://img.shields.io/badge/CSS-%23FFac45.svg?&style=for-the-badge&logo=css3&logoColor=white&color=blue)
 ![JavaScript](https://img.shields.io/badge/JAVASCRIPT-%23FFac45.svg?&style=for-the-badge&logo=javascript&logoColor=white&color=yellow)
+![FIGMA](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
 
 #### Je vous propose de voir mon portfolio pour voir ce que je fais avec le lien juste ci-dessous (ME WEBSITE).
